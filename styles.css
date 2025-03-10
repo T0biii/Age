@@ -261,19 +261,27 @@ body.dark-mode ::-webkit-calendar-picker-indicator {
         width: 100%;
         max-width: 280px;
         gap: 15px;
+        align-items: center;
     }
     
     #birthdate, #birthtime {
         width: 100%;
         box-sizing: border-box;
+        text-align: center;
     }
     
     .input-field {
         width: 100%;
+        align-items: center;
     }
     
     #calculate-btn {
         width: 100%;
         margin-top: 5px;
+        text-align: center;
+    }
+    
+    .input-label {
+        text-align: center;
     }
 }
