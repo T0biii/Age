@@ -137,3 +137,36 @@ function updateAge() {
     // Call function again (every 10ms)
     counterId = setTimeout(updateAge, 10);
 }
+
+
+// Am Anfang der Datei nach den Variablendeklarationen
+
+// Set default date to 10 years ago
+function setDefaultDate() {
+    const today = new Date();
+    
+    // Set max date to today
+    const birthdateInput = document.getElementById('birthdate');
+    birthdateInput.max = today.toISOString().split('T')[0];
+    
+    // Instead of setting a default value, we'll add a click handler
+    // that will set the value just before opening, then clear it after
+    birthdateInput.addEventListener('click', function(e) {
+        // Only set a temporary value if the field is empty
+        if (!this.value) {
+            const tenYearsAgo = new Date();
+            tenYearsAgo.setFullYear(today.getFullYear() - 10);
+            
+            // Set temporary value to position the calendar
+            this.value = tenYearsAgo.toISOString().split('T')[0];
+            
+            // Use setTimeout to clear the value after the calendar opens
+            setTimeout(() => {
+                this.value = '';
+            }, 5);
+        }
+    });
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', setDefaultDate);
