@@ -260,14 +260,20 @@ body.dark-mode ::-webkit-calendar-picker-indicator {
         flex-direction: column;
         width: 100%;
         max-width: 280px;
+        gap: 15px;
     }
     
     #birthdate, #birthtime {
         width: 100%;
-        margin-bottom: 10px;
+        box-sizing: border-box;
     }
     
     .input-field {
         width: 100%;
+    }
+    
+    #calculate-btn {
+        width: 100%;
+        margin-top: 5px;
     }
 }
