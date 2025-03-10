@@ -29,10 +29,10 @@ The application is built using:
 
 The age calculation uses the following formula:
 
-´´´js
+```js
 const diffTime = now - birthDate;
 const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
-´´´
+```
 
 
 This accounts for leap years by using 365.25 days per year in the calculation.
