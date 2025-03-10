@@ -240,3 +240,34 @@ body.dark-mode input[type="time"] {
 body.dark-mode ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
+
+/* Verbesserte Beschriftungen für mobile Geräte */
+.input-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: var(--title-color);
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Design für mobile Geräte */
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    #birthdate, #birthtime {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .input-field {
+        width: 100%;
+    }
+}

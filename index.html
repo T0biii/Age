@@ -12,8 +12,14 @@
             <p>Your data is not stored or shared. All calculations happen locally in your browser.</p>
         </div>
         <div class="input-row">
-            <input type="date" id="birthdate" placeholder="Birth date">
-            <input type="time" id="birthtime" placeholder="Birth time">
+            <div class="input-field">
+                <label for="birthdate" class="input-label">Birth Date</label>
+                <input type="date" id="birthdate" placeholder="Birth date">
+            </div>
+            <div class="input-field">
+                <label for="birthtime" class="input-label">Birth Time (optional)</label>
+                <input type="time" id="birthtime" placeholder="Birth time">
+            </div>
         </div>
         <button id="calculate-btn">Calculate</button>
     </div>
