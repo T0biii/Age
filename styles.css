@@ -4,8 +4,6 @@
     --title-color: #888;
     --input-bg: white;
     --input-border: #ccc;
-    --button-bg: #4CAF50;
-    --button-hover: #45a049;
     --popup-bg: white;
     --error-color: #d32f2f;
     --close-button-bg: #f44336;
@@ -21,8 +19,6 @@
         --title-color: #aaa;
         --input-bg: #2d2d3a;
         --input-border: #444;
-        --button-bg: #388e3c;
-        --button-hover: #2e7d32;
         --popup-bg: #2a2a2a;
         --error-color: #ef5350;
         --close-button-bg: #d32f2f;
@@ -32,14 +28,30 @@
     }
 }
 
+body.light-mode {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --title-color: #888;
+    --input-bg: white;
+    --input-border: #ccc;
+    --button-bg: #009688; /* Geändert von #4CAF50 zu einem Blauton */
+    --button-hover: #00796b; /* Geändert von #45a049 zu einem dunkleren Blauton */
+    --popup-bg: white;
+    --error-color: #d32f2f;
+    --close-button-bg: #f44336;
+    --close-button-hover: #d32f2f;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --disclaimer-color: #777;
+}
+
 body.dark-mode {
     --bg-color: #121212;
     --text-color: #e0e0e0;
     --title-color: #aaa;
     --input-bg: #2d2d3a;
     --input-border: #444;
-    --button-bg: #388e3c;
-    --button-hover: #2e7d32;
+    --button-bg: #00796b; /* Geändert von #388e3c zu einem helleren Blauton für Dark Mode */
+    --button-hover: #004d40; /* Geändert von #2e7d32 zu einem mittleren Blauton */
     --popup-bg: #2a2a2a;
     --error-color: #ef5350;
     --close-button-bg: #d32f2f;
@@ -48,21 +60,7 @@ body.dark-mode {
     --disclaimer-color: #999;
 }
 
-body.light-mode {
-    --bg-color: #f5f5f5;
-    --text-color: #333;
-    --title-color: #888;
-    --input-bg: white;
-    --input-border: #ccc;
-    --button-bg: #4CAF50;
-    --button-hover: #45a049;
-    --popup-bg: white;
-    --error-color: #d32f2f;
-    --close-button-bg: #f44336;
-    --close-button-hover: #d32f2f;
-    --overlay-bg: rgba(0, 0, 0, 0.5);
-    --disclaimer-color: #777;
-}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -78,7 +76,7 @@ body {
 }
 
 #input-container {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     transition: opacity 0.3s, visibility 0.3s;
     display: flex;
     flex-direction: column;
@@ -115,10 +113,31 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #calculate-btn:hover {
     background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#calculate-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode specific button improvements */
+body.dark-mode #calculate-btn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #calculate-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: var(--button-hover);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 #counter-container {
