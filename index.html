@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Counter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="input-container">
+        <div class="input-row">
+            <input type="date" id="birthdate" placeholder="Birth date">
+            <input type="time" id="birthtime" placeholder="Birth time">
+        </div>
+        <button id="calculate-btn">Calculate</button>
+    </div>
+    
+    <div id="counter-container">
+        <h1 id="age-title">Age</h1>
+        <div id="age-container">
+            <div id="age-integer">0</div>
+            <div id="age-decimal">.000000000</div>
+        </div>
+    </div>
+
+    <!-- Custom popup for error messages -->
+    <div id="overlay"></div>
+    <div id="error-popup">
+        <div id="error-message">Please enter your birth date.</div>
+        <button id="close-popup">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
