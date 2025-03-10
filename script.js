@@ -10,6 +10,35 @@ const errorPopup = document.getElementById('error-popup');
 const overlay = document.getElementById('overlay');
 const errorMessage = document.getElementById('error-message');
 const closePopup = document.getElementById('close-popup');
+const ageContainer = document.getElementById('age-container');
+
+// Check for user's preferred color scheme
+function getPreferredColorScheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+    }
+    return 'light';
+}
+
+// Apply initial color scheme based on browser preference
+function applyInitialColorScheme() {
+    const preferredScheme = getPreferredColorScheme();
+    document.body.classList.add(`${preferredScheme}-mode`);
+}
+
+// Toggle dark/light mode
+function toggleColorScheme() {
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+    } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+    }
+}
+
+// Initialize color scheme
+applyInitialColorScheme();
 
 // Function to show error popup
 function showError(message) {
@@ -69,6 +98,9 @@ ageTitle.addEventListener('click', function() {
         inputContainer.classList.add('hidden');
     }
 });
+
+// Event listener for the age display to toggle dark mode
+ageContainer.addEventListener('click', toggleColorScheme);
 
 // Function to calculate current age
 function calculateAge() {
