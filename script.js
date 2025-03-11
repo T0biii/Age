@@ -70,6 +70,9 @@ document.getElementById('calculate-btn').addEventListener('click', function() {
         return;
     }
     
+    // Update URL with current values
+    updateUrl();
+    
     // Combine birth date and time and save as Date object
     const dateTimeStr = `${birthdateValue}T${birthtimeValue}:00`;
     birthDate = new Date(dateTimeStr);
@@ -138,8 +141,41 @@ function updateAge() {
     counterId = setTimeout(updateAge, 10);
 }
 
+// Function to handle URL parameters
+function handleUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const dateParam = urlParams.get('date');
+    const timeParam = urlParams.get('time');
+    
+    if (dateParam) {
+        const birthdateInput = document.getElementById('birthdate');
+        birthdateInput.value = dateParam;
+        
+        if (timeParam) {
+            const birthtimeInput = document.getElementById('birthtime');
+            birthtimeInput.value = timeParam;
+        }
+        
+        // Auto-calculate if both parameters are present
+        document.getElementById('calculate-btn').click();
+    }
+}
 
-// Am Anfang der Datei nach den Variablendeklarationen
+// Function to update URL with current date/time
+function updateUrl() {
+    const birthdateValue = document.getElementById('birthdate').value;
+    const birthtimeValue = document.getElementById('birthtime').value;
+    
+    if (birthdateValue) {
+        let newUrl = `${window.location.pathname}?date=${birthdateValue}`;
+        if (birthtimeValue) {
+            newUrl += `&time=${birthtimeValue}`;
+        }
+        
+        // Update URL without reloading the page
+        window.history.pushState({}, '', newUrl);
+    }
+}
 
 // Set default date to 10 years ago
 function setDefaultDate() {
@@ -168,5 +204,41 @@ function setDefaultDate() {
     });
 }
 
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', setDefaultDate);
+// Modify the calculate button event listener to update URL
+document.getElementById('calculate-btn').addEventListener('click', function() {
+    // Get birth date and time from input fields
+    const birthdateValue = document.getElementById('birthdate').value;
+    const birthtimeValue = document.getElementById('birthtime').value || '00:00';
+    
+    if (!birthdateValue) {
+        showError('Please enter your birth date.');
+        return;
+    }
+    
+    // Update URL with current values
+    updateUrl();
+    
+    // Combine birth date and time and save as Date object
+    const dateTimeStr = `${birthdateValue}T${birthtimeValue}:00`;
+    birthDate = new Date(dateTimeStr);
+    
+    // Hide input field
+    inputContainer.classList.add('hidden');
+    
+    // Calculate current age
+    calculateAge();
+    
+    // Stop counter if already running
+    if (counterId) {
+        clearTimeout(counterId);
+    }
+    
+    // Start counter
+    updateAge();
+});
+
+// Call these functions when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setDefaultDate();
+    handleUrlParams();
+});
